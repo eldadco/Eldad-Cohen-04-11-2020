@@ -7,7 +7,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 
 public abstract class BaseTest {
-    private SeleniumInfraStructure seleniumInfra = DriverSingleton.getInstance().seleniumInfra;
+    private final SeleniumInfraStructure seleniumInfra = DriverSingleton.getInstance().seleniumInfra;
 
     @BeforeClass
     public void beforeClassMethod() {
