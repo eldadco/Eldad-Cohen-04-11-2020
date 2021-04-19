@@ -16,7 +16,7 @@ public class SeleniumInfraStructure {
     protected ExpectedConditions conditions;
 
     public SeleniumInfraStructure() {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/p0028867/Downloads/chromeFolder/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\p0028867\\Documents\\Java---selenium-project-using-testNG\\src\\main\\java\\Pages\\DriverUtills\\chromrDriver\\chromedriver.exe");
         this.driver = new ChromeDriver();
         this.waitForElems = new WebDriverWait(this.driver, 40);
         this.js = (JavascriptExecutor) driver;
@@ -33,8 +33,8 @@ public class SeleniumInfraStructure {
         }
     }
 
-    public boolean isElementExists(String locatorType, String locatorValue) {
-        if (this.findElem(locatorType, locatorValue) != null) {
+    public boolean isElementExists(By locator, WebElement fromElement) {
+        if (this.findElem(locator, fromElement) != null) {
             System.out.println("The element has found successfully");
             return true;
         } else {
@@ -45,7 +45,7 @@ public class SeleniumInfraStructure {
 
     public Boolean urlValidation(String url) {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(6000);
             if (this.driver.getCurrentUrl().contains(url)) {
                 System.out.println("SeleniumInfra success message : the current url is: " + url);
                 return true;
@@ -60,56 +60,37 @@ public class SeleniumInfraStructure {
         }
     }
 
-    public WebElement findElem(String locatorType, String locatorValue) {
+    public WebElement findElem(By locator,WebElement fromElement) {
 
         try {
-            switch (locatorType) {
-                case "class":
-                    return this.driver.findElement(By.className(locatorValue));
-                case "id":
-                    return this.driver.findElement(By.id(locatorValue));
-                case "xpath":
-                    return this.driver.findElement(By.xpath(locatorValue));
-                case "css":
-                    return this.driver.findElement(By.cssSelector(locatorValue));
-                case "tag":
-                    return this.driver.findElement(By.tagName(locatorValue));
-                default:
-                    System.out.println("Selenium-infra error message:\tThe locator type is not correct");
-                    break;
+            if(fromElement != null){
+                return fromElement.findElement(locator);
             }
+            else{
+                return this.driver.findElement(locator);
+            }
+
         } catch (InvalidSelectorException excep) {
-            System.out.println("Selenium-infra error : \t" + "invalid selector exception by locatorType: " + locatorType + " and locator value : " + locatorValue);
+            System.out.println("Selenium-infra error : \t" + "invalid selector located : " + locator );
         } catch (NoSuchElementException excep) {
-            System.out.println("Selenium-infra error : No such Element Exception by locatorType: "
-                    + locatorType + " and locator value : " + locatorValue);
+            System.out.println("Selenium-infra error : No such Element Exception located : " +  locator);
 
         } catch (ElementNotVisibleException excep) {
 
-            System.out.println("Selenium-infra error : element not visible exception by locatorType: " + locatorType + " and locator value : " + locatorValue);
+            System.out.println("Selenium-infra error : element not visible exception located : " + locator);
         }
         return null;
 
     }
 
-    public List<WebElement> findElementListBy(String locatorType, String locatorValue) {
+    public List<WebElement> findElementListBy(By locator, WebElement fromElement) {
 
         try {
-
-            switch (locatorType) {
-                case "class":
-                    return this.driver.findElements(By.className(locatorValue));
-                case "id":
-                    return this.driver.findElements(By.id(locatorValue));
-                case "xpath":
-                    return this.driver.findElements(By.xpath(locatorValue));
-                case "css":
-                    return this.driver.findElements(By.cssSelector(locatorValue));
-                case "tag":
-                    return this.driver.findElements(By.tagName(locatorValue));
-                default:
-                    System.out.println("Selenium-infra error message:\tThe locator type is not correct");
-                    break;
+            if(fromElement != null){
+                return fromElement.findElements(locator);
+            }
+            else{
+                return this.driver.findElements(locator);
             }
         } catch (NoSuchElementException | ElementNotVisibleException except) {
             System.out.println("Selenium-infra error : \t" + except.toString());
@@ -118,40 +99,40 @@ public class SeleniumInfraStructure {
 
     }
 
-    public String getTextFromElement(String locatorType, String locatorValue, WebElement elem) {
+    public String getTextFromElement(By locator, WebElement fromElement, WebElement element) {
         try {
-            if (elem == null) {
-                elem = this.findElem(locatorType, locatorValue);
+            if (element == null) {
+                element = this.findElem(locator, fromElement);
             }
-            return elem.getText();
+            return element.getText();
         } catch (Exception excep) {
             System.out.println("seleniumInfra error " + excep.toString());
             return "getTextFromElement function failed";
         }
     }
 
-    public void clickElement(String locatorType, String locatorValue, WebElement elem) {
+    public void clickElement(By locator, WebElement fromElement,WebElement element) {
         try {
-            if (elem == null) {
-                elem = this.findElem(locatorType, locatorValue);
+            if (fromElement == null) {
+                element = this.findElem(locator, fromElement);
             }
-            elem.click();
+            element.click();
             System.out.println("Selenium-infra success message:\tThe element was successfully clicked");
         } catch (ElementNotVisibleException | ElementNotSelectableException excep) {
             System.out.println("Selenium-infra error : \t" + excep.toString());
         }
     }
 
-    public void write(String locatorType, String locatorValue, WebElement elem, String text) {
+    public void write(By locator,WebElement fromElement, WebElement element, String text) {
         try {
-            if (elem == null) {
-                elem = this.findElem(locatorType, locatorValue);
+            if (element == null) {
+                element = this.findElem(locator, fromElement);
             }
 
-            elem.sendKeys(text);
+            element.sendKeys(text);
             System.out.println("Selenium-infra success message:\twriting text to the element");
-        } catch (ElementNotVisibleException excep) {
-            System.out.println("Selenium-infra error : \t" + excep.toString());
+        } catch (ElementNotVisibleException exception) {
+            System.out.println("Selenium-infra error : \t" + exception.toString());
         }
     }
 

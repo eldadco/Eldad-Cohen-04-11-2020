@@ -8,15 +8,15 @@ public class ContactUsActions extends BasePage {
     }
 
     public void insertDetails(String nameInput, String companyInput, String emailInput, String telephoneInput) {
-        this.seleniumInfra.write(Locators.CSS.getLocator(), ContactUsPage.nameInput, null, nameInput);
-        this.seleniumInfra.write(Locators.CSS.getLocator(), ContactUsPage.companyInput, null, companyInput);
-        this.seleniumInfra.write(Locators.CSS.getLocator(), ContactUsPage.emailInput, null, emailInput);
-        this.seleniumInfra.write(Locators.CSS.getLocator(), ContactUsPage.telephoneInput, null, telephoneInput);
+        this.seleniumInfra.write( ContactUsPage.nameInput,null, null, nameInput);
+        this.seleniumInfra.write( ContactUsPage.companyInput, null,null, companyInput);
+        this.seleniumInfra.write(ContactUsPage.emailInput, null,null, emailInput);
+        this.seleniumInfra.write(ContactUsPage.telephoneInput,null, null, telephoneInput);
 
     }
 
     public void clickOnContactUsButton() {
-        this.seleniumInfra.clickElement(Locators.CSS.getLocator(), ContactUsPage.contactUsButton, null);
+        this.seleniumInfra.clickElement(ContactUsPage.contactUsButton, null,null);
 
     }
 }

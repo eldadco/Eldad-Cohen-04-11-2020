@@ -15,7 +15,7 @@ public class DataReceivedActions extends BasePage {
     }
 
     public void goToHeroloWebSite() {
-        this.seleniumInfra.clickElement(Locators.CSS.getLocator(), DataReceivedPage.heroloWebSiteLinkButton, null);
+        this.seleniumInfra.clickElement( DataReceivedPage.heroloWebSiteLinkButton,null,null);
         this.seleniumInfra.switchToTheNewTab();
 
     }
@@ -26,7 +26,7 @@ public class DataReceivedActions extends BasePage {
 
     public void returnToAutomationWebSite() {
         this.seleniumInfra.wait(2);
-        this.seleniumInfra.clickElement(Locators.CSS.getLocator(), DataReceivedPage.returnToAutomationSiteLinkButton, null);
+        this.seleniumInfra.clickElement(DataReceivedPage.returnToAutomationSiteLinkButton, null,null);
 
     }
 

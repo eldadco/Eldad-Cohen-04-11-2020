@@ -11,15 +11,15 @@ public class SampleWorksActions extends BasePage {
     }
 
     public void ClickOnLeftArrow() {
-        this.seleniumInfra.clickElement(Locators.CSS.getLocator(), SampleWorksPage.leftArrow, null);
+        this.seleniumInfra.clickElement(SampleWorksPage.leftArrow,null, null);
     }
 
     public void ClickOnRightArrow() {
-        this.seleniumInfra.clickElement(Locators.CSS.getLocator(), SampleWorksPage.rightArrow, null);
+        this.seleniumInfra.clickElement(SampleWorksPage.rightArrow,null,null);
     }
 
     public List<WebElement> getDotsList() {
-        return this.seleniumInfra.findElementListBy(Locators.CSS.getLocator(), SampleWorksPage.dotsList);
+        return this.seleniumInfra.findElementListBy(SampleWorksPage.dotsList,null);
     }
 
     public Integer getIndexOfActiveDot() {

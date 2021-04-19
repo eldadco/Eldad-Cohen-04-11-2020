@@ -11,15 +11,15 @@ public class HelpFeatureVerifications extends BasePage {
     }
 
     public boolean isNameInputErrorDisplayed() {
-        return this.seleniumInfra.isElementExists(Locators.CSS.getLocator(), nameErrorLabelByCss);
+        return this.seleniumInfra.isElementExists(HelpFeaturePage.nameErrorLabelByCss,null);
 
     }
 
     public boolean isEmailInputErrorDisplayed() {
-        return this.seleniumInfra.isElementExists(Locators.CSS.getLocator(), emailErrorLabelByCss);
+        return this.seleniumInfra.isElementExists(HelpFeaturePage.emailErrorLabelByCss,null);
     }
 
     public boolean isPhoneNumberInputErrorDisplayed() {
-        return this.seleniumInfra.isElementExists(Locators.CSS.getLocator(), phoneNumberErrorLabelByCss);
+        return this.seleniumInfra.isElementExists(HelpFeaturePage.phoneNumberErrorLabelByCss,null);
     }
 }

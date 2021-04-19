@@ -1,8 +1,10 @@
 package Pages.DataReceivedPage;
 
+import org.openqa.selenium.By;
+
 public class DataReceivedPage {
     //link buttons
-    public static final String heroloWebSiteLinkButton = "div.euDPwb a button";
-    public static final String returnToAutomationSiteLinkButton = "main a[href='/']";
+    public static final By heroloWebSiteLinkButton = By.cssSelector("div.euDPwb a button");
+    public static final By returnToAutomationSiteLinkButton = By.cssSelector("main a[href='/']");
 
 }

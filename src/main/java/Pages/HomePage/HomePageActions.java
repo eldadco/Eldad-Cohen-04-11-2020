@@ -12,7 +12,7 @@ public class HomePageActions extends BasePage {
 
     private WebElement findFeatureTitleElement(String title)
     {
-        List<WebElement> featureTitles= this.seleniumInfra.findElementListBy(Locators.CSS.getLocator(), HomePage.featureTitles);
+        List<WebElement> featureTitles= this.seleniumInfra.findElementListBy(HomePage.featureTitles,null);
 
         for(WebElement elem : featureTitles)
         {

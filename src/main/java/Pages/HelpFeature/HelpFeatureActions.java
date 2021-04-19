@@ -13,13 +13,13 @@ public class HelpFeatureActions extends BasePage {
     }
 
     public void insertDetails(String nameInput, String emailInput, String phoneNumberInput) {
-        this.seleniumInfra.write(Locators.CSS.getLocator(), nameInputByCss, null, nameInput);
-        this.seleniumInfra.write(Locators.CSS.getLocator(), emailInputByCss, null, emailInput);
-        this.seleniumInfra.write(Locators.CSS.getLocator(), phoneNumberByCss, null, phoneNumberInput);
+        this.seleniumInfra.write(HelpFeaturePage.nameInputByCss, null,null, nameInput);
+        this.seleniumInfra.write(HelpFeaturePage.emailInputByCss, null,null, emailInput);
+        this.seleniumInfra.write(HelpFeaturePage.phoneNumberByCss,null, null, phoneNumberInput);
 
     }
 
     public void send() {
-        this.seleniumInfra.clickElement(Locators.CSS.getLocator(), sendButtonByCss, null);
+        this.seleniumInfra.clickElement(HelpFeaturePage.sendButtonByCss,null, null);
     }
 }
